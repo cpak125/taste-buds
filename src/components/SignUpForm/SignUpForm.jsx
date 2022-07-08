@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { signUp } from "../../utilities/users-service";
 
 export default class SignUpForm extends Component {
   state = {
@@ -16,9 +17,23 @@ export default class SignUpForm extends Component {
     });
   };
 
-  handleSubmit = (evt) => {
+  handleSubmit = async (evt) => {
+    // Prevent form from being submitted to server
     evt.preventDefault();
-    alert(JSON.stringify(this.state));
+    try {
+      const formData = { ...this.state };
+      delete formData.confirm;
+      delete formData.error;
+      // The promise returned by the signUp service method
+      // will resolve to the user object included in the
+      // payload of the JSON Web Token (JWT)
+      const user = await signUp(formData);
+      // Baby step!
+      console.log(user);
+    } catch {
+      // An error occured
+      this.setState({ error: 'Sign Up Failed - Try Again' });
+    }
   };
 
   // With class-based Components, the render method must be overriden
