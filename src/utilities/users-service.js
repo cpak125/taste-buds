@@ -6,7 +6,7 @@ export async function signUp(userData) {
   const token = await usersAPI.signUp(userData);
   // Persist the token to localStorage
   localStorage.setItem('token', token);
-  return token;
+  return getUser();
 }
 
 export function getToken() {
@@ -29,3 +29,23 @@ export function getUser() {
   // If there's a token, return the user in the payload, else return null
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
+
+export function logOut() {
+  localStorage.removeItem('token');
+}
+
+export async function login(credentials) {
+  const token = await usersAPI.login(credentials);
+  localStorage.setItem('token', token);
+  return getUser();
+}
+
+export async function checkToken() {
+  // Just so that you don't forget how to use .then
+  return usersAPI.checkToken()
+    // checkToken returns a string, but let's 
+    // make it a Date object for more flexibility
+    .then(dateStr => new Date(dateStr));
+  // If you want to use async/await
+  // return new Date(await usersAPI.checkToken());
+}; 
