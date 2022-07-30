@@ -1,0 +1,27 @@
+.HomePage {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1fr;
+  padding: 4rem;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+#about {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#about > h1 {
+  font-size: 45px;
+}
+
+#splash > img {
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0.8;
+}

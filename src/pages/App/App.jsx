@@ -6,6 +6,9 @@ import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
+import HomePage from '../HomePage/HomePage';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -13,7 +16,7 @@ export default function App() {
     <main className="App">
       {user ?
         <>
-          <NavBar user={user} setUser={setUser} />
+          {/* <NavBar user={user} setUser={setUser} /> */}
           <Routes>
             {/* Route components in here */}
             <Route path='/orders/new' element={<NewOrderPage />} />
@@ -21,7 +24,14 @@ export default function App() {
           </Routes>
         </>
         :
-        <AuthPage setUser={setUser} />
+        <>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginForm />} />
+            <Route path='/signup' element={<SignUpForm />} />
+          </Routes>
+        </>
+        // <AuthPage setUser={setUser} />
       }
     </main>
   );

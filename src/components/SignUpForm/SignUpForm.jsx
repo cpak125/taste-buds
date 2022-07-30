@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { signUp } from "../../utilities/users-service";
+import NavBar from '../NavBar/NavBar';
 
 export default class SignUpForm extends Component {
   state = {
@@ -43,6 +44,7 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div>
+        <NavBar />
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <label>Name</label>
