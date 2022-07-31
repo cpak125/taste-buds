@@ -50,6 +50,4 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   );
-
-
 }
