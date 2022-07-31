@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import AuthPage from '../../pages/AuthPage/AuthPage';
 import * as userService from '../../utilities/users-service';
+import Logo from '../Logo/Logo';
 import './NavBar.css';
+import home from '../../img/home.png';
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -11,19 +13,29 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav className='NavBar'>
-      <div id='app-logo'></div>
+      <Logo />
+
       {user ?
         <div id='links'>
-          <Link to="/recipes/search">Search Recipes</Link>
-          & nbsp; | &nbsp;
-          <Link to="/recipes/saved">My Recipes</Link>
-          &nbsp;|&nbsp;
+          <button>
+            <Link to="/" className='link'>Home</Link>
+          </button>
+          <button>
+            <Link to="/recipes/search">Search Recipes</Link>
+          </button>
+          <button>
+            <Link to="/recipes/saved">My Recipes</Link>
+          </button>
           <span>Welcome, {user.name}</span>
-          &nbsp;|&nbsp;
-          <Link to="" onClick={handleLogOut}>Log Out</Link>
+          <button>
+            <Link to="" onClick={handleLogOut}>Log Out</Link>
+          </button>
         </div>
         :
         <div id='links'>
+          <button>
+            <Link to="/" className='link'>Home</Link>
+          </button>
           <button>
             <Link to="/login" className='link'>Log In</Link>
           </button>

@@ -1,27 +1,25 @@
 .HomePage {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 2.5fr;
   grid-template-rows: 1fr;
-  padding: 4rem;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
+  height: 93vh;
+  width: 100%;
 }
 
 #about {
-  width: 50%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
 
 #about > h1 {
   font-size: 45px;
 }
 
-#splash > img {
-  width: 100%;
-  border-radius: 10px;
-  opacity: 0.8;
+#splash {
+  background: url("../../img/splash.jpg") no-repeat center;
+  background-size: cover;
 }

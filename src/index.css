@@ -23,7 +23,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   height: 100vh;
 }
 
@@ -80,12 +79,11 @@ code {
 }
 
 .form-container {
-  padding: 3vmin;
+  padding: 4vmin;
   background-color: var(--tan-1);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
-  width: 50%;
-  margin: auto;
+  width: 60vmin;
 }
 
 p.error-message {
@@ -96,12 +94,14 @@ p.error-message {
 form {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  align-items: center;
   gap: 1.25vmin;
   color: var(--text-light);
+  height: 30vmin;
 }
 
 label {
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   display: flex;
   align-items: center;
 }
@@ -156,4 +156,9 @@ form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+  font-size: 2.5vmin;
+}
+
+button:hover {
+  background-color: gray;
 }
