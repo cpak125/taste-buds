@@ -9,9 +9,36 @@
 }
 
 .container {
-  padding: 2px 16px;
+  padding: 0px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.container > .title {
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 10px 5px;
+}
+
+.container > .source {
+  font-style: italic;
+  font-size: 12pt;
+  padding: 10px 0px
 }
 
 img {
   width: 100%;
+}
+
+.divider {
+  padding: 8px 0px;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  font-size: 14pt;
+}
+
+.divider > span {
+  border-left: 2px solid gray;
+  padding-left: 6px;
 }

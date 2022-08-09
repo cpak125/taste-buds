@@ -1,0 +1,116 @@
+.RecipeDetailPage {
+  height: 100vh;
+  margin: 5vmin 10vmin;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 10% 10% 10% 10% 10% auto;
+  grid-template-areas:
+    " title image"
+    " source image"
+    " stats image"
+    "save-btn image"
+    "row-border row-border"
+    "ingredients directions";
+}
+
+.title {
+  grid-area: title;
+  justify-self: center;
+  font-size: 32pt;
+  font-weight: bold;
+}
+
+.source {
+  grid-area: source;
+  align-self: center;
+  font-size: 14pt;
+}
+
+.image {
+  grid-area: image;
+  object-fit: contain;
+  width: 100%;
+  max-height: 100%;
+}
+
+.save-btn {
+  width: 18vmin;
+  height: 4.5vmin;
+  grid-area: save-btn;
+  justify-self: center;
+  align-self: flex-end;
+  padding: 1vmin 3vmin;
+  color: var(--white);
+  background-color: var(--orange);
+  font-size: 2.2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid var(--tan-2);
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+.row-border {
+  grid-area: row-border;
+  border-bottom: 2px solid gray;
+  align-self: center;
+}
+
+.directions-btn {
+  grid-area: save-btn;
+  padding: 1vmin 3vmin;
+  color: var(--white);
+  background-color: gray;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid var(--tan-2);
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+.directions-btn:hover {
+  background-color: var(--orange);
+}
+
+.stats {
+  grid-area: stats;
+  display: flex;
+  width: 30vw;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16pt;
+  justify-self: center;
+}
+
+.servings {
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  padding: 0px 24px;
+}
+
+.ingredients {
+  grid-area: ingredients;
+  padding-left: 8vmin;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 14pt;
+}
+
+.list {
+  padding-left: 2vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+.directions {
+  grid-area: directions;
+  justify-self: center;
+}

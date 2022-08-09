@@ -8,11 +8,11 @@ export default function RecipeListItem({ key, title, image, source, sourceURL, c
       <div className="RecipeListItem">
         <img src={image} alt="" />
         <div className="container">
-          <h3>{title}</h3>
+          <div className='title'>{title}</div>
           <div className='divider'>
-            {calories}  |  {ingredients.length} Ingredients
-          </div><br />
-          <div>{source}</div>
+            {calories} Calories <span>{ingredients.length} Ingredients</span>
+          </div>
+          <div className='source'>{source}</div>
         </div>
       </div >
     </Link >
