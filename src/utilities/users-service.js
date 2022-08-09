@@ -32,6 +32,8 @@ export function getUser() {
 
 export function logOut() {
   localStorage.removeItem('token');
+  localStorage.removeItem('query');
+  localStorage.removeItem('search');
 }
 
 export async function login(credentials) {

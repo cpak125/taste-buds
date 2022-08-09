@@ -1,3 +1,4 @@
+import './SearchForm.css';
 
 export default function SearchForm({ search, setSearch, setQuery }) {
 
@@ -9,17 +10,16 @@ export default function SearchForm({ search, setSearch, setQuery }) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
     setQuery(search);
+    setSearch(search);
   }
 
   return (
     <div>
       <div className='SearchForm'>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={handleSubmit}>
-            <input type="text" name="query" value={search} onChange={handleChange} required />
-            <button type="submit">SEARCH</button>
-          </form>
-        </div>
+        <form className="search-form" autoComplete="off" onSubmit={handleSubmit}>
+          <input type="text" placeholder='Enter dish name' name="query" value={search} onChange={handleChange} required />
+          <button type="submit">SEARCH</button>
+        </form>
       </div>
     </div>
   );

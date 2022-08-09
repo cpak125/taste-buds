@@ -1,0 +1,8 @@
+.RecipeList {
+  margin-top: 10vmin;
+  padding-bottom: 10vmin;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  row-gap: 10vmin;
+}

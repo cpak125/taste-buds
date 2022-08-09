@@ -1,0 +1,17 @@
+.SearchForm {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 2vmin;
+  background-color: var(--tan-1);
+  border: .1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  width: 50vw;
+  height: 12vh;
+  margin-top: 10vmin;
+}
