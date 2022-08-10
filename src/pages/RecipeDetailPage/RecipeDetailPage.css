@@ -8,7 +8,7 @@
     " title image"
     " source image"
     " stats image"
-    "save-btn image"
+    "btn image"
     "row-border row-border"
     "ingredients directions";
 }
@@ -24,6 +24,7 @@
   grid-area: source;
   align-self: center;
   font-size: 14pt;
+  font-style: oblique;
 }
 
 .image {
@@ -33,16 +34,13 @@
   max-height: 100%;
 }
 
-.save-btn {
-  width: 18vmin;
-  height: 4.5vmin;
-  grid-area: save-btn;
+.btn {
+  grid-area: btn;
   justify-self: center;
   align-self: flex-end;
   padding: 1vmin 3vmin;
   color: var(--white);
-  background-color: var(--orange);
-  font-size: 2.2vmin;
+  font-size: 2.5vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
@@ -50,6 +48,14 @@
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+}
+
+.orange {
+  background-color: var(--orange);
+}
+
+.red {
+  background-color: red;
 }
 
 .row-border {
@@ -63,7 +69,7 @@
   padding: 1vmin 3vmin;
   color: var(--white);
   background-color: gray;
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
@@ -75,6 +81,11 @@
 
 .directions-btn:hover {
   background-color: var(--orange);
+}
+
+.directions > span {
+  font-style: oblique;
+  font-size: 14pt;
 }
 
 .stats {
@@ -106,11 +117,20 @@
   padding-left: 2vmin;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 90vh;
+}
+
+.list > li {
+  margin-bottom: 1vmin;
 }
 
 .directions {
   grid-area: directions;
   justify-self: center;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 18pt;
 }
