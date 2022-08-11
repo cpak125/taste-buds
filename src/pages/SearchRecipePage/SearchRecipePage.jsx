@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
@@ -6,19 +7,11 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import * as edamamService from '../../utilities/edamam-service';
 
 
-export default function SearchRecipePage({ user, setUser }) {
+export default function SearchRecipePage({ user, setUser, detailedRecipe, setDetailedRecipe }) {
   const [search, setSearch] = useState(localStorage.getItem('search') ? localStorage.getItem('search') : '');
   const [query, setQuery] = useState(localStorage.getItem('query') ? localStorage.getItem('query') : '');
   const [recipes, setRecipes] = useState([]);
-
-
-  useEffect(() => {
-    localStorage.setItem('query', query);
-  }, [query]);
-
-  useEffect(() => {
-    localStorage.setItem('search', search);
-  }, [search]);
+  const activeSearch = useRef(true);
 
   useEffect(function() {
     async function getRecipes() {
@@ -28,6 +21,14 @@ export default function SearchRecipePage({ user, setUser }) {
     getRecipes();
   }, [query]);
 
+  useEffect(() => {
+    localStorage.setItem('query', query);
+  }, [query]);
+
+  useEffect(() => {
+    localStorage.setItem('search', search);
+  }, [search]);
+
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
@@ -36,7 +37,12 @@ export default function SearchRecipePage({ user, setUser }) {
         setSearch={setSearch}
         setQuery={setQuery}
       />
-      <RecipeList recipes={recipes} />
+      <RecipeList
+        recipes={recipes}
+        detailedRecipe={detailedRecipe}
+        setDetailedRecipe={setDetailedRecipe}
+        activeSearch={activeSearch}
+      />
     </div>
   );
 }

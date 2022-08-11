@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './SavedListItem.css';
 
 export default function SavedListItem({ recipe }) {
-
   const { title, image, source, sourceURL, calories, servings, ingredients } = recipe;
 
   return (

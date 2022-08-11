@@ -3,7 +3,7 @@
   margin: 5vmin 10vmin;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  grid-template-rows: 10% 10% 10% 10% 10% auto;
+  grid-template-rows: 1.4fr 10% 10% 10% 10% auto;
   grid-template-areas:
     " title image"
     " source image"

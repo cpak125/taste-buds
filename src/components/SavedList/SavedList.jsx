@@ -1,8 +1,8 @@
 import SavedListItem from '../SavedListItem/SavedListItem';
 import './SavedList.css';
 
-export default function SavedList({ recipes }) {
-  const recipeList = recipes.map((r) =>
+export default function SavedList({ savedRecipes }) {
+  const savedList = savedRecipes.map((r) =>
     <SavedListItem
       key={r._id}
       recipe={r}
@@ -11,7 +11,7 @@ export default function SavedList({ recipes }) {
 
   return (
     <div className="SavedList">
-      {recipeList}
+      {savedList}
     </div>
   );
 }

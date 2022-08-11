@@ -34,6 +34,7 @@ export function logOut() {
   localStorage.removeItem('token');
   localStorage.removeItem('query');
   localStorage.removeItem('search');
+  localStorage.removeItem('detailedRecipe');
 }
 
 export async function login(credentials) {

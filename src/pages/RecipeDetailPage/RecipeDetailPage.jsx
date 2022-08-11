@@ -1,50 +1,58 @@
-import { useLocation } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import './RecipeDetailPage.css';
 
-export default function RecipeDetailPage({ user, setUser }) {
-  const location = useLocation();
-  const { title, image, source, sourceURL, calories, servings, ingredients, activeSearch } = location.state;
-  const ingredientsList = ingredients.map((ing, i) => <li key={i}>{ing}</li>);
+export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, activeSearch }) {
+  const recipeData = {
+    title: detailedRecipe.r.recipe.label,
+    image: detailedRecipe.r.recipe.image,
+    source: detailedRecipe.r.recipe.source,
+    sourceURL: detailedRecipe.r.recipe.url,
+    calories: (detailedRecipe.r.recipe.calories / detailedRecipe.r.recipe.yield).toFixed(),
+    servings: detailedRecipe.r.recipe.yield,
+    ingredients: detailedRecipe.r.recipe.ingredientLines,
+  };
+
+  const ingredientsList = recipeData.ingredients.map((ing, i) => <li key={i}>{ing}</li>);
+
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
       <main className="RecipeDetailPage">
-        <div className="title">{title}</div>
-        <div className="source">See full recipe on: <a href={sourceURL} target="_blank" rel="noreferrer">{source}</a></div>
+        <div className="title">{recipeData.title}</div>
+        <div className="source">See full recipe on: <a href={recipeData.sourceURL} target="_blank" rel="noreferrer">{recipeData.source}</a></div>
         <div className="stats">
           <div>
-            <div className="bold">{ingredients.length}</div>
+            <div className="bold">{recipeData.ingredients.length}</div>
             <div>Ingredients</div>
           </div>
           <div className="servings">
-            <div className="bold">{servings}</div>
+            <div className="bold">{recipeData.servings}</div>
             <div>Servings</div>
           </div>
           <div>
-            <div className="bold">{calories}</div>
+            <div className="bold">{recipeData.calories}</div>
             <div>Calories</div>
           </div>
         </div>
-        <img src={image} alt="" className="image" />
+        <img src={recipeData.image} alt="" className="image" />
         {activeSearch ?
-          <button className="btn orange">+ Save</button>
+          <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
           :
           <button className="btn red">Delete</button>
         }
 
         <div className="row-border"></div>
         <div className="ingredients">
-          <h3>{ingredients.length} Ingredients</h3>
+          <h3>{recipeData.ingredients.length} Ingredients</h3>
           <ul className="list">
             {ingredientsList}
           </ul>
         </div>
         <div className="directions">
           <button className="directions-btn">
-            <a className="link" href={sourceURL} target="_blank" rel="noreferrer"> Directions</a>
+            <a className="link" href={recipeData.sourceURL} target="_blank" rel="noreferrer"> Directions</a>
           </button>
-          <span>at {source}</span>
+          <span>at {recipeData.source}</span>
         </div>
       </main >
 

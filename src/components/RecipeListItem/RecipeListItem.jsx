@@ -1,21 +1,27 @@
 import { Link } from 'react-router-dom';
 import './RecipeListItem.css';
 
-export default function RecipeListItem({ title, image, source, sourceURL, calories, servings, ingredients }) {
+export default function RecipeListItem({ r, detailedRecipe, setDetailedRecipe }) {
+
+  function handleSetRecipe(r) {
+    // const recipeData = { r };
+    // setDetailedRecipe(recipeData);
+    setDetailedRecipe((detailedRecipe) => ({ ...detailedRecipe, r }));
+  }
+
   return (
-    <Link to={`/recipes/search/${title}`} style={{ textDecoration: 'none', color: 'black' }}
-      state={{ title, image, source, sourceURL, calories, servings, ingredients, activeSearch: true }} >
+    <Link to={`/recipes/search/${r.recipe.label}`} onClick={() => handleSetRecipe(r)}
+      style={{ textDecoration: 'none', color: 'black' }}>
       <div className="RecipeListItem">
-        <img src={image} alt="" />
+        <img src={r.recipe.image} alt="" />
         <div className="container">
-          <div className='title'>{title}</div>
+          <div className='title'>{r.recipe.label}</div>
           <div className='divider'>
-            {calories} Calories <span>{ingredients.length} Ingredients</span>
+            {(r.recipe.calories / r.recipe.yield).toFixed()} Calories <span>{r.recipe.ingredientLines.length} Ingredients</span>
           </div>
-          <div className='source'>{source}</div>
+          <div className='source'>{r.recipe.source}</div>
         </div>
       </div >
     </Link >
-
   );
 };
