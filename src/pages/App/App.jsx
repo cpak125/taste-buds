@@ -14,6 +14,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [detailedRecipe, setDetailedRecipe] = useState(JSON.parse(localStorage.getItem('detailedRecipe')) ? JSON.parse(localStorage.getItem('detailedRecipe')) : {});
+  const [error, setError] = useState('');
 
   useEffect(function() {
     async function getRecipes() {
@@ -28,8 +29,14 @@ export default function App() {
   }, [detailedRecipe]);
 
   async function handleSave(recipeData) {
-    const recipe = await recipesAPI.add(recipeData);
-    setSavedRecipes([...savedRecipes, recipe]);
+    try {
+      const recipe = await recipesAPI.add(recipeData);
+      alert('Recipe saved');
+      setSavedRecipes([...savedRecipes, recipe]);
+    } catch {
+      setError('Recipe has already been saved');
+      alert('Recipe has already been saved');
+    }
   }
 
   return (
@@ -53,7 +60,8 @@ export default function App() {
                   activeSearch={true}
                   handleSave={handleSave}
                   detailedRecipe={detailedRecipe}
-                  setDetailedRecipe={setDetailedRecipe} />} />
+                  setDetailedRecipe={setDetailedRecipe}
+                  error={error} />} />
             <Route path='/recipes/saved'
               element={
                 <SavedRecipePage

@@ -1,7 +1,7 @@
 import NavBar from "../../components/NavBar/NavBar";
 import './RecipeDetailPage.css';
 
-export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, activeSearch }) {
+export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, activeSearch, error }) {
   const recipeData = {
     title: detailedRecipe.r.recipe.label,
     image: detailedRecipe.r.recipe.image,
@@ -36,7 +36,10 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
         </div>
         <img src={recipeData.image} alt="" className="image" />
         {activeSearch ?
-          <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
+          <div className="save">
+            <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
+            <p className="error-message">{error}</p>
+          </div>
           :
           <button className="btn red">Delete</button>
         }

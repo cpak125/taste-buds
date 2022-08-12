@@ -3,12 +3,12 @@
   margin: 5vmin 10vmin;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  grid-template-rows: 1.4fr 10% 10% 10% 10% auto;
+  grid-template-rows: 1.4fr 10% 14% 10% 10% auto;
   grid-template-areas:
     " title image"
     " source image"
     " stats image"
-    "btn image"
+    "save image"
     "row-border row-border"
     "ingredients directions";
 }
@@ -32,6 +32,10 @@
   object-fit: contain;
   width: 100%;
   max-height: 100%;
+}
+
+.save {
+  grid-area: save;
 }
 
 .btn {
