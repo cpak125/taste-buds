@@ -1,15 +1,14 @@
 import RecipeListItem from "../RecipeListItem/RecipeListItem";
 import './RecipeList.css';
 
-export default function RecipeList({ recipes, detailedRecipe, setDetailedRecipe, activeSearch }) {
+export default function RecipeList({ recipes, setDetailedRecipe, handleSetRecipe }) {
   const recipeList = recipes.map((r, i) => {
     return (
       <RecipeListItem
         key={i}
         r={r}
-        detailedRecipe={detailedRecipe}
+        handleSetRecipe={handleSetRecipe}
         setDetailedRecipe={setDetailedRecipe}
-        activeSearch={activeSearch}
       />
     );
   }

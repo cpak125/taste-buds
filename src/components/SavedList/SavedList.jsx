@@ -1,11 +1,12 @@
 import SavedListItem from '../SavedListItem/SavedListItem';
 import './SavedList.css';
 
-export default function SavedList({ savedRecipes }) {
+export default function SavedList({ savedRecipes, handleSetSavedRecipe }) {
   const savedList = savedRecipes.map((r) =>
     <SavedListItem
       key={r._id}
-      recipe={r}
+      r={r}
+      handleSetSavedRecipe={handleSetSavedRecipe}
     />
   );
 

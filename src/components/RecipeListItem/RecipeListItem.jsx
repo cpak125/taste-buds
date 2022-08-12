@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom';
 import './RecipeListItem.css';
 
-export default function RecipeListItem({ r, detailedRecipe, setDetailedRecipe }) {
-
-  function handleSetRecipe(r) {
-    // const recipeData = { r };
-    // setDetailedRecipe(recipeData);
-    setDetailedRecipe((detailedRecipe) => ({ ...detailedRecipe, r }));
-  }
+export default function RecipeListItem({ r, handleSetRecipe }) {
 
   return (
     <Link to={`/recipes/search/${r.recipe.label}`} onClick={() => handleSetRecipe(r)}

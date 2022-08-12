@@ -35,6 +35,7 @@ export function logOut() {
   localStorage.removeItem('query');
   localStorage.removeItem('search');
   localStorage.removeItem('detailedRecipe');
+  localStorage.removeItem('savedDetailedRecipe');
 }
 
 export async function login(credentials) {

@@ -9,24 +9,43 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import SearchRecipePage from '../SearchRecipePage/SearchRecipePage';
 import RecipeDetailPage from '../RecipeDetailPage/RecipeDetailPage';
 import SavedRecipePage from '../SavedRecipePage/SavedRecipePage';
+import SavedRecipeDetailPage from '../SavedRecipeDetailPage/SavedRecipeDetailPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const [detailedRecipe, setDetailedRecipe] = useState(JSON.parse(localStorage.getItem('detailedRecipe')) ? JSON.parse(localStorage.getItem('detailedRecipe')) : {});
-  const [error, setError] = useState('');
+  const [detailedRecipe, setDetailedRecipe] = useState(JSON.parse(localStorage.getItem('detailedRecipe')) ?
+    JSON.parse(localStorage.getItem('detailedRecipe'))
+    :
+    {}
+  );
 
-  useEffect(function() {
-    async function getRecipes() {
-      const recipes = await recipesAPI.getAll();
-      setSavedRecipes(recipes);
-    }
-    getRecipes();
-  }, []);
+  // const [savedDetailedRecipe, setSavedDetailedRecipe] = useState({});
+  const [savedDetailedRecipe, setSavedDetailedRecipe] = useState(localStorage.getItem('savedDetailedRecipe') ?
+    localStorage.getItem('savedDetailedRecipe')
+    :
+    {}
+  );
 
   useEffect(() => {
     localStorage.setItem('detailedRecipe', JSON.stringify(detailedRecipe));
   }, [detailedRecipe]);
+
+  useEffect(() => {
+    localStorage.setItem('savedDetailedRecipe', savedDetailedRecipe);
+  }, [savedDetailedRecipe]);
+
+  function handleSetRecipe(r) {
+    // const recipeData = { r };
+    // setDetailedRecipe(recipeData);
+    setDetailedRecipe((detailedRecipe) => ({ ...detailedRecipe, r }));
+  }
+
+  function handleSetSavedRecipe(r) {
+    const recipeData = r;
+    setSavedDetailedRecipe(recipeData);
+    // setSavedDetailedRecipe((savedDetailedRecipe) => ({ ...savedDetailedRecipe, r }));
+  }
 
   async function handleSave(recipeData) {
     try {
@@ -34,7 +53,6 @@ export default function App() {
       alert('Recipe saved');
       setSavedRecipes([...savedRecipes, recipe]);
     } catch {
-      setError('Recipe has already been saved');
       alert('Recipe has already been saved');
     }
   }
@@ -50,30 +68,36 @@ export default function App() {
                 <SearchRecipePage
                   user={user}
                   setUser={setUser}
-                  detailedRecipe={detailedRecipe}
-                  setDetailedRecipe={setDetailedRecipe} />} />
+                  handleSetRecipe={handleSetRecipe}
+                />}
+            />
             <Route path='/recipes/search/:title'
               element={
                 <RecipeDetailPage
                   user={user}
                   setUser={setUser}
-                  activeSearch={true}
                   handleSave={handleSave}
                   detailedRecipe={detailedRecipe}
-                  setDetailedRecipe={setDetailedRecipe}
-                  error={error} />} />
+                />}
+            />
             <Route path='/recipes/saved'
               element={
                 <SavedRecipePage
                   user={user}
                   setUser={setUser}
-                  savedRecipes={savedRecipes} />} />
+                  savedRecipes={savedRecipes}
+                  setSavedRecipes={setSavedRecipes}
+                  handleSetSavedRecipe={handleSetSavedRecipe}
+                />}
+            />
             <Route path='/recipes/saved/:title'
               element={
-                <RecipeDetailPage
+                <SavedRecipeDetailPage
                   user={user}
                   setUser={setUser}
-                  activeSearch={false} />} />
+                  savedDetailedRecipe={savedDetailedRecipe}
+                />}
+            />
 
             {/* redirect to /recipes/search if path in address bar hasn't matched a <Route> above */}
             <Route path='/*' element={<Navigate to="/recipes/search" />} />

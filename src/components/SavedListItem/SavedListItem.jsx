@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import './SavedListItem.css';
 
-export default function SavedListItem({ recipe }) {
-  const { title, image, source, sourceURL, calories, servings, ingredients } = recipe;
+export default function SavedListItem({ r, handleSetSavedRecipe }) {
+  const { title, image, source, calories, ingredients } = r;
 
   return (
-    <Link to={`/recipes/saved/${recipe.title}`} style={{ textDecoration: 'none', color: 'black' }}
-      state={{ title, image, source, sourceURL, calories, servings, ingredients, activeSearch: false }} >
+    <Link to={`/recipes/saved/${title}`} style={{ textDecoration: 'none', color: 'black' }}
+      onClick={() => handleSetSavedRecipe(r)}>
       <div className="SavedListItem">
         <img src={image} alt="" />
         <div className="container">
