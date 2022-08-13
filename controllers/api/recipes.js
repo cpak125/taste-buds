@@ -2,6 +2,7 @@ const Recipe = require('../../models/recipe');
 
 module.exports = {
   getAll,
+  getOne,
   create
 };
 
@@ -12,9 +13,18 @@ async function getAll(req, res) {
   res.json(recipes);
 };
 
+async function getOne(req, res) {
+  const recipe = await Recipe.findOne({
+    user: req.user._id,
+    title: req.params.title
+  }).exec();
+  if (recipe) res.json(true);
+  else res.json(false);
+}
+
 async function create(req, res) {
   try {
-    const recipeExists = await Recipe.findOne({ user: req.user._id, title: req.body.title });
+    const recipeExists = await Recipe.findOne({ user: req.user._id, title: req.body.title }).exec();
     if (recipeExists) throw new Error();
     req.body.user = req.user._id;
     const recipe = await Recipe.create(req.body);

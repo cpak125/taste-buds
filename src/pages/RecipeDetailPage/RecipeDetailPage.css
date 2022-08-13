@@ -103,8 +103,8 @@
 }
 
 .servings {
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  border-left: 1.5px solid gray;
+  border-right: 1.5px solid gray;
   padding: 0px 24px;
 }
 
@@ -137,4 +137,9 @@
 .bold {
   font-weight: bold;
   font-size: 18pt;
+}
+
+.message {
+  color: var(--orange);
+  text-align: center;
 }

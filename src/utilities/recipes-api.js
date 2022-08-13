@@ -9,3 +9,8 @@ export function getAll() {
 export function add(recipeData) {
   return sendRequest(BASE_URL, 'POST', recipeData);
 }
+
+export function getOne(title) {
+  return sendRequest(`${BASE_URL}/${title}`);
+};
+

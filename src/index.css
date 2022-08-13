@@ -86,11 +86,6 @@ code {
   width: 60vmin;
 }
 
-p.error-message {
-  color: var(--orange);
-  text-align: center;
-}
-
 form {
   display: grid;
   grid-template-columns: 1fr 3fr;

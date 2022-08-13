@@ -8,7 +8,7 @@ export default function SavedRecipeDetailPage({ user, setUser, savedDetailedReci
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
-      <main className="RecipeDetailPage">
+      <main className="SavedRecipeDetailPage">
         <div className="title">{title}</div>
         <div className="source">See full recipe on: <a href={sourceURL} target="_blank" rel="noreferrer">{source}</a></div>
         <div className="stats">

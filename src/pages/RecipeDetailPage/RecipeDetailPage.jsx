@@ -1,7 +1,17 @@
+import { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import './RecipeDetailPage.css';
 
-export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, error }) {
+export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, hasBeenSaved }) {
+  const [saved, setSaved] = useState(false);
+
+  useEffect(function() {
+    async function checkIfSaved() {
+      const result = await hasBeenSaved(recipeData.title);
+      setSaved(result);
+    }
+    checkIfSaved();
+  }, []);
 
   const recipeData = {
     title: detailedRecipe.r.recipe.label,
@@ -37,8 +47,11 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
         </div>
         <img src={recipeData.image} alt="" className="image" />
         <div className="save">
-          <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
-          {error && <p className="error-message">{error}</p>}
+          {saved ?
+            <p className="message">Recipe has already been saved</p>
+            :
+            <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
+          }
         </div>
         <div className="row-border"></div>
         <div className="ingredients">

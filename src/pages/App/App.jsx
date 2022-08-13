@@ -20,7 +20,6 @@ export default function App() {
     {}
   );
 
-  // const [savedDetailedRecipe, setSavedDetailedRecipe] = useState({});
   const [savedDetailedRecipe, setSavedDetailedRecipe] = useState(localStorage.getItem('savedDetailedRecipe') ?
     localStorage.getItem('savedDetailedRecipe')
     :
@@ -57,6 +56,11 @@ export default function App() {
     }
   }
 
+  async function hasBeenSaved(title) {
+    const isSaved = await recipesAPI.getOne(title);
+    return isSaved;
+  }
+
   return (
     <main className="App">
       {user ?
@@ -78,6 +82,7 @@ export default function App() {
                   setUser={setUser}
                   handleSave={handleSave}
                   detailedRecipe={detailedRecipe}
+                  hasBeenSaved={hasBeenSaved}
                 />}
             />
             <Route path='/recipes/saved'
