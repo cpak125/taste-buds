@@ -3,7 +3,8 @@ import * as recipesAPI from '../../utilities/recipes-api';
 import NavBar from "../../components/NavBar/NavBar";
 import SavedList from "../../components/SavedList/SavedList";
 
-export default function SavedRecipePage({ user, setUser, setSavedRecipes, savedRecipes, handleSetSavedRecipe }) {
+export default function SavedRecipePage({ user, setUser, savedRecipes, setSavedRecipes, handleSetSavedRecipe }) {
+
   useEffect(function() {
     async function getRecipes() {
       const recipes = await recipesAPI.getAll();

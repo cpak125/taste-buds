@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as recipesAPI from '../../utilities/recipes-api';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import { getUser } from '../../utilities/users-service';
 import HomePage from '../HomePage/HomePage';
@@ -20,8 +20,8 @@ export default function App() {
     {}
   );
 
-  const [savedDetailedRecipe, setSavedDetailedRecipe] = useState(localStorage.getItem('savedDetailedRecipe') ?
-    localStorage.getItem('savedDetailedRecipe')
+  const [savedDetailedRecipe, setSavedDetailedRecipe] = useState(JSON.parse(localStorage.getItem('savedDetailedRecipe')) ?
+    JSON.parse(localStorage.getItem('savedDetailedRecipe'))
     :
     {}
   );
@@ -31,7 +31,7 @@ export default function App() {
   }, [detailedRecipe]);
 
   useEffect(() => {
-    localStorage.setItem('savedDetailedRecipe', savedDetailedRecipe);
+    localStorage.setItem('savedDetailedRecipe', JSON.stringify(savedDetailedRecipe));
   }, [savedDetailedRecipe]);
 
   function handleSetRecipe(r) {
@@ -41,19 +41,22 @@ export default function App() {
   }
 
   function handleSetSavedRecipe(r) {
-    const recipeData = r;
-    setSavedDetailedRecipe(recipeData);
+    setSavedDetailedRecipe(r);
     // setSavedDetailedRecipe((savedDetailedRecipe) => ({ ...savedDetailedRecipe, r }));
   }
 
   async function handleSave(recipeData) {
     try {
       const recipe = await recipesAPI.add(recipeData);
-      alert('Recipe saved');
       setSavedRecipes([...savedRecipes, recipe]);
     } catch {
       alert('Recipe has already been saved');
     }
+  }
+
+  function deleteRecipe(title) {
+    window.confirm("Are you sure you want to delete this recipe");
+    recipesAPI.deleteRecipe(title);
   }
 
   async function hasBeenSaved(title) {
@@ -101,6 +104,7 @@ export default function App() {
                   user={user}
                   setUser={setUser}
                   savedDetailedRecipe={savedDetailedRecipe}
+                  deleteRecipe={deleteRecipe}
                 />}
             />
 

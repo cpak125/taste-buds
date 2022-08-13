@@ -11,7 +11,7 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
       setSaved(result);
     }
     checkIfSaved();
-  }, []);
+  });
 
   const recipeData = {
     title: detailedRecipe.r.recipe.label,
@@ -48,7 +48,7 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
         <img src={recipeData.image} alt="" className="image" />
         <div className="save">
           {saved ?
-            <p className="message">Recipe has already been saved</p>
+            <p className="message">Recipe has been saved</p>
             :
             <button className="btn orange" onClick={() => handleSave(recipeData)}>+ Save</button>
           }

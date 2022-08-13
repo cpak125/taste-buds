@@ -19,6 +19,8 @@ export default function SearchRecipePage({ user, setUser, detailedRecipe, setDet
     getRecipes();
   }, [query]);
 
+
+
   useEffect(() => {
     localStorage.setItem('query', query);
   }, [query]);

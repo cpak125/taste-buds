@@ -12,6 +12,7 @@ router.get('/:title', recipesCtrl.getOne);
 router.post('/', recipesCtrl.create);
 
 // DELETE /api/recipes/:title
+router.delete('/:title', recipesCtrl.deleteRecipe);
 
 
 module.exports = router;

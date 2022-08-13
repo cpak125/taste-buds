@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import './SavedRecipeDetailPage.css';
 
-export default function SavedRecipeDetailPage({ user, setUser, savedDetailedRecipe }) {
+export default function SavedRecipeDetailPage({ user, setUser, savedDetailedRecipe, deleteRecipe }) {
+  const navigate = useNavigate();
   const { title, image, source, sourceURL, calories, servings, ingredients } = savedDetailedRecipe;
   const ingredientsList = ingredients.map((ing, i) => <li key={i}>{ing}</li>);
+
+  function handleDelete() {
+    deleteRecipe(title);
+    navigate('/recipes/saved');
+  }
 
   return (
     <div>
@@ -26,7 +33,7 @@ export default function SavedRecipeDetailPage({ user, setUser, savedDetailedReci
           </div>
         </div>
         <img src={image} alt="" className="image" />
-        <button className="btn red">Delete</button>
+        <button className="btn red" onClick={() => handleDelete(title)}>Delete</button>
         <div className="row-border"></div>
         <div className="ingredients">
           <h3>{ingredients.length} Ingredients</h3>

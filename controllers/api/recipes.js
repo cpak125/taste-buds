@@ -3,13 +3,12 @@ const Recipe = require('../../models/recipe');
 module.exports = {
   getAll,
   getOne,
-  create
+  create,
+  deleteRecipe
 };
 
 async function getAll(req, res) {
-  const recipes = await Recipe.find({
-    user: req.user._id
-  });
+  const recipes = await Recipe.find({ user: req.user._id });
   res.json(recipes);
 };
 
@@ -32,5 +31,11 @@ async function create(req, res) {
   } catch {
     res.status(400).json('Recipe has already been saved');
   }
+}
 
+function deleteRecipe(req, res) {
+  Recipe.deleteOne({ user: req.user._id, title: req.params.title }, function(err) {
+    if (err) console.log(err);
+    console.log("Successful deletion");
+  });
 }

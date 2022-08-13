@@ -14,3 +14,7 @@ export function getOne(title) {
   return sendRequest(`${BASE_URL}/${title}`);
 };
 
+export function deleteRecipe(title) {
+  return sendRequest(`${BASE_URL}/${title}`, 'DELETE');
+}
+
