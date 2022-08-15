@@ -20,6 +20,7 @@ export default function SearchForm({ search, setSearch, setQuery }) {
           <input type="text" placeholder='Enter dish name' name="query" value={search} onChange={handleChange} required />
           <button type="submit">SEARCH</button>
         </form>
+        <div id="edamam-badge" data-color="transparent"></div>
       </div>
     </div>
   );

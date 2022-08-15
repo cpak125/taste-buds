@@ -66,8 +66,8 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
           </button>
           <span>at {recipeData.source}</span>
         </div>
+        <div id="edamam-badge" data-color="transparent"></div>
       </main >
-
     </div >
   );
 }
