@@ -27,7 +27,7 @@ A MERN-stack application that allows users to search for recipe information and 
 
 ## Getting Started
 - [Trello Board](https://trello.com/b/4HtiXI5N/tastebuds)
-- [Deployed App](https://moview-app-cp.herokuapp.com/)
+- [Deployed App](https://taste-buds-cp.herokuapp.com/)
 - Start by logging in or signing up
 - Once logged in you will be able:
    - Search and save recipes
