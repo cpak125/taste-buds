@@ -109,6 +109,8 @@ input {
   background-image: none !important;
   /* prevent lastpass */
   outline: none;
+  align-self: center;
+  height: 4vmin;
 }
 
 input:focus {
