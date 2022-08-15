@@ -2,7 +2,7 @@
 
 A MERN-stack application that allows users to search for recipe information and save for future reference.
 
-[Deployed App](https://moview-app-cp.herokuapp.com/) 
+[Deployed App](https://taste-buds-cp.herokuapp.com/) 
 
 ## Screenshots of App
 
