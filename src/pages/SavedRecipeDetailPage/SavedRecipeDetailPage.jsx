@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import './SavedRecipeDetailPage.css';
+import edamam from '../../img/edamam-logo.svg';
 
 export default function SavedRecipeDetailPage({ user, setUser, savedDetailedRecipe, deleteRecipe }) {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function SavedRecipeDetailPage({ user, setUser, savedDetailedReci
           <span>at {source}</span>
         </div>
       </main >
+      <img src={edamam} alt="" className='edamam' />
 
     </div >
   );

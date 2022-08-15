@@ -143,9 +143,3 @@
   color: var(--orange);
   text-align: center;
 }
-
-#edamam-badge {
-  position: fixed;
-  right: 0px;
-  bottom: 0px;
-}

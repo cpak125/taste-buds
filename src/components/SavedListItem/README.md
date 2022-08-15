@@ -1,15 +1,17 @@
-# Moview
+# TasteBuds
 
-A MERN-stack application that allows users to search for recipes 
+A MERN-stack application that allows users to search for recipe information and save for future reference.
 
 [Deployed App](https://moview-app-cp.herokuapp.com/) 
 
 ## Screenshots of App
 
-<!-- <img src="https://i.imgur.com/aqoFpJF.png" />  
-<img src="https://i.imgur.com/r4u57LV.png" />
-<img src="https://i.imgur.com/5b6PKjd.png" />  
-<img src="https://i.imgur.com/bK3S9rk.png" /> -->
+<img src="https://i.imgur.com/FOBiBRF.jpg" />  
+<img src="https://i.imgur.com/9rZOf3n.png" />
+<img src="https://i.imgur.com/oeamE6G.png" />  
+<img src="https://i.imgur.com/uBwsjcN.png" />
+<img src="https://i.imgur.com/VEWbPN9.png" />
+
 
 ## Technologies Used
   - HTML 
@@ -17,15 +19,16 @@ A MERN-stack application that allows users to search for recipes
   - JavaScript
   - Node.js
   - Express
-  - EJS
+  - React
   - MongoDB
   - Mongoose
-  - The Movie Database (TMDB) API
+  - JWT(JSON Web Token)-Based Authentication
+  - Edamam Recipe Search API
 
 ## Getting Started
-- [Trello Board](https://trello.com/b/mIenoNgr/moview)
+- [Trello Board](https://trello.com/b/4HtiXI5N/tastebuds)
 - [Deployed App](https://moview-app-cp.herokuapp.com/)
-- Start by logging in via Google to access additional functionality
+- Start by logging in or signing up
 - Once logged in you will be able:
-   - Search and add movies
-   - Post a review for a movie
+   - Search and save recipes
+   - Delete saved recipes

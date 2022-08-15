@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import './RecipeDetailPage.css';
+import edamam from '../../img/edamam-logo.svg';
 
 export default function RecipeDetailPage({ user, setUser, detailedRecipe, handleSave, hasBeenSaved }) {
   const [saved, setSaved] = useState(false);
@@ -66,7 +67,7 @@ export default function RecipeDetailPage({ user, setUser, detailedRecipe, handle
           </button>
           <span>at {recipeData.source}</span>
         </div>
-        <div id="edamam-badge" data-color="transparent"></div>
+        <img src={edamam} alt="" className="edamam" />
       </main >
     </div >
   );

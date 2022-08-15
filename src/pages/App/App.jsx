@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as recipesAPI from '../../utilities/recipes-api';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import { getUser } from '../../utilities/users-service';
 import HomePage from '../HomePage/HomePage';

@@ -156,3 +156,10 @@ button[type="submit"]:not(.search-form > button) {
 button:hover {
   background-color: gray;
 }
+
+.edamam {
+  width: 30vmin;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+}
