@@ -13,7 +13,7 @@
   align-items: center;
   width: 100%;
   padding: 1rem;
-  background-color: #F2F4F3;
+  background-color: var(--tan-3);
 }
 
 #about > h1 {
